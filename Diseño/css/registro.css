@@ -1,0 +1,83 @@
+.menú{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    gap: 15px;
+    margin-top:20px;
+    height:60px;
+    box-shadow: 0 1px 10px ;
+}
+p a{
+    margin: 0 15px;
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+h1{
+margin-top:15px;
+text-align: center;
+padding: 15px;
+border-radius: 20px;
+color: rgb(78, 76, 76);
+}
+h2{
+color: rgb(131, 134, 145);
+text-align: left;
+}
+p button{
+    background-color:rgb(78, 76, 76);
+    border:none;
+}
+button a{
+    position:left;
+    margin-top: 10px;
+    text-decoration:none;
+    color:white;
+    }
+body {
+box-sizing: border-box;
+font-family: "Lucida Sans";
+font-size: 21px;
+background-image: url("../imagenes/m3.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+table-layout: center;
+}
+form {
+background: rgba(145, 145, 145, 0.6);
+padding: 20px;
+border-radius: 10px;
+color: white;
+max-width: 600px;
+margin: auto;
+}
+.container{
+    background-position:left;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px ;
+}
+form input{resize: vertical; width:540px;}
+input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+textarea { min-height: 100px; resize: vertical;width:540px;}
+button {
+    width: 100%;
+    padding: 12px;
+    background:rgb(61, 60, 60);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    }

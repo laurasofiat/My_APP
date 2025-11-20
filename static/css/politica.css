@@ -6,6 +6,26 @@ body {
     background-color:#c1c3d1;
     color: #333;
 }
+.menú{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    gap: 15px;
+    margin-top:20px;
+    height:60px;
+    box-shadow: 0 1px 10px ;
+}
+p a{
+    margin: 0 15px;
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+.espa div p{
+    height:20px;;
+    background-color:#c1c3d1;
+}
 .container {
     max-width: 900px;
     margin: 0 auto;

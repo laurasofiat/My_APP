@@ -2,10 +2,67 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# Página principal
 @app.route('/')
-def index():
+def principal():
+    return render_template('index.html')
+
+# Registro
+@app.route('/registro')
+def registro():
     return render_template('registro.html')
 
+# Iniciar sesión
+@app.route('/inicio')
+def login():
+    return render_template('inicio.html')
+
+# Enviar (declaración de salud o lo que sea en tu proyecto)
+@app.route('/envia')
+def enviar():
+    return render_template('envia.html')
+
+# Acerca de
+@app.route('/acerca')
+def acerca():
+    return render_template('acerca.html')
+
+# Departamentos
+@app.route('/dep')
+def departamentos():
+    return render_template('dep.html')
+
+# Seguros
+@app.route('/seguros')
+def seguros():
+    return render_template('seguros.html')
+
+# Pagina de usuarios registrados o que iniciaron sesión
+@app.route('/pagina_usuarios')
+def pagina_de_usuarios():
+    return render_template('pg_usuario.html')
+
+# Política de privacidad
+@app.route('/politicas')
+def politicas():
+    return render_template('politica.html')
+
+# Reserva
+@app.route('/reservar')
+def reservas():
+    return render_template('reservar.html')
+
+# Contactos
+@app.route('/terminos')
+def terminos():
+    return render_template('terminos.html')
+
+# Contactos
+@app.route('/contactos')
+def contactos():
+    return render_template('contacto.html')
+
+# Procesar formulario
 @app.route('/procesar', methods=['POST'])
 def procesar():
     nombre = request.form.get('nombre')
@@ -14,3 +71,4 @@ def procesar():
 
 if __name__ == '__main__':
     app.run(debug=True)
+

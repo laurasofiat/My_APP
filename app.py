@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from conexion_base_datos import conectar_bd
+from conexion_registros import conectar_bd
 
 app = Flask(__name__)
 

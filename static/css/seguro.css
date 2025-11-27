@@ -110,17 +110,16 @@ a {
     display: flex;
     gap: 25px;
 }
-
-.nav-links li a {
+.menu{
+    display:flex;
+}
+.menú li a {
     font-size: 14px;
     font-weight: 500;
     padding: 5px 0;
+    gap:20px;
 }
 
-.nav-links li a:hover, 
-.nav-links .active-link a {
-    color: var(--color-link-hover);
-}
 
 /* Icono de Cuenta/Dropdown */
 .account-dropdown {

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from conexion_base_datos import conectar_bd
 
 app = Flask(__name__)
 
@@ -63,10 +64,32 @@ def contactos():
     return render_template('contacto.html')
 
 # Procesar formulario
+
 @app.route('/procesar', methods=['POST'])
 def procesar():
+    id_usuarios = request.form.get('id_usuarios')
     nombre = request.form.get('nombre')
-    mensaje = f"¡Hola, {nombre}! Este saludo viene desde Python."
+    apellido = request.form.get('apellido')
+    direccion = request.form.get('direccion')
+    telefono = request.form.get('telefono')
+    correo_electronico = request.form.get('correo_electronico')
+    mensaje = request.form.get('mensaje')
+
+    conexion = conectar_bd()
+    if conexion is None:
+        return "Error: No se pudo conectar a la base de datos", 500
+
+    cursor = conexion.cursor()
+    sql_insertar = """
+        INSERT INTO registro (id_usuarios, nombre, apellido, direccion, telefono, correo_electronico, mensaje)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """
+    cursor.execute(sql_insertar, (id_usuarios, nombre, apellido, direccion, telefono, correo_electronico, mensaje))
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+    mensaje = f"¡Hola, {nombre}! Registro guardado correctamente."
     return render_template('index.html', mensaje=mensaje)
 
 if __name__ == '__main__':

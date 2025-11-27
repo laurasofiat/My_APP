@@ -20,13 +20,13 @@
         <div id="alerta" class="message"></div> 
         <form id="contactForm">
             <label for="id_usuarios">Número de Identificación</label> 
-            <input type="integer" id="id_usuarios" name="id_usuarios" placeholder="Ingresa Identificación" required>
+            <input type="varchar" id="id_usuarios" name="id_usuarios" placeholder="Ingresa Identificación" required>
 
             <label for="nombre">Nombre</label>
-            <input type="varchar" id="nombre" name="nombre" placeholder="Ingresa Nombre"required>
+            <input type="text" id="nombre" name="nombre" placeholder="Ingresa Nombre"required>
             
             <label for="apellido">Apellido</label>
-            <input type="varchar" id="apellido" name="apellido" placeholder="Ingresa Apellido" required>
+            <input type="text" id="apellido" name="apellido" placeholder="Ingresa Apellido" required>
             
             <label for="direccion">Dirección</label>
             <input type="varchar" id="direccion" name="direccion" placeholder="Ingresa Dirección" required>
@@ -38,7 +38,7 @@
             <input type="varchar" id="correo" name="correo" placeholder="Ingresa Correo" requered>
 
             <label for="mensaje">Mensaje</label>
-            <textarea type="varchar" id="mensaje" name="mensaje" placeholder="Ingresa un Mensaje(No es Obligatorio)"></textarea>
+            <textarea type="text" id="mensaje" name="mensaje" placeholder="Ingresa un Mensaje(No es Obligatorio)"></textarea>
             
             
             <button type="submit">Enviar</button>

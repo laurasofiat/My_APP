@@ -1,71 +1,122 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import psycopg2
+from psycopg2.extras import RealDictCursor
+import traceback
+import os
+import datetime 
 
+
+# Configuración de la aplicación
 app = Flask(__name__)
-app.secret_key = "clave_secreta"  # necesario para usar flask
 
-# conexión a la base de datos PostgreSQL
+DB_CONFIG = {
+    'host': 'localhost',
+    'database': 'MedicAgenda',
+    'user': 'postgres',
+    'password': '123456',
+    'port': 5432
+}
+
+# Función para conectar la base de datos
 def conectar_bd():
     try:
-        conn = psycopg2.connect(
-            host="localhost",
-            database="Bases_de_datos_Proyecto",
-            user="postgres",
-            password="123456",
-            port="5432"
-        )
-        return conn
-
+        conexion = psycopg2.connect(**DB_CONFIG)
+        return conexion
     except psycopg2.Error as e:
-        print(f"Error al conectar a la base de datos: {e}")
+        print(f" Error al conectar a la base de datos: {e}")
         return None
 
+# Crear tabla si no existe
+def crear_tabla():
+    conexion = conectar_bd()
+    if conexion:
+        cursor = conexion.cursor()
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS registro (
+            id_usuarios VARCHAR NOT NULL PRIMARY KEY,
+            nombre TEXT NOT NULL,
+            apellido TEXT NOT NULL,
+            direccion VARCHAR NOT NULL,
+            telefono VARCHAR NOT NULL,
+            correo_electronico VARCHAR NOT NULL,
+            mensaje TEXT,
+            creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+        """)
+        conexion.commit()
+        cursor.close()
+        conexion.close()
 
-# ruta principal
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'GET':
-        return render_template('index.html')
+# Página principal
+@app.route('/registro')
+def inicio():
+    return render_template('registro.html')
 
-    if request.method == 'POST':
+# Ruta para guardar contacto
+# Ruta para guardar contacto (versión que recarga la página)
+@app.route('/pagina_usuarios', methods=['POST'])
+def guardar_contactos():
+    try:
+        conexion = conectar_bd()
+        if conexion is None:
+            return "Error: No se pudo conectar a la base de datos", 500
 
-        id_usuarios = request.form['id_usuarios']
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        direccion = request.form['direccion']
-        telefono = request.form['telefono']
-        correo = request.form['correo_electronico']
-        mensaje = request.form['mensaje']
+        id_usuarios = request.form.get('id_usuarios', '').strip()
+        nombre = request.form.get('nombre', '').strip()
+        apellido = request.form.get('apellido', '').strip()
+        direccion = request.form.get('direccion', '').strip()
+        correo_electronico = request.form.get('correo_electronico', '').strip()
+        mensaje = request.form.get('mensaje', '').strip()
+        telefono = request.form.get('telefono', '').strip()
 
-        conn = None
-        try:
-            conn = conectar_bd()
-            if conn:
-                cur = conn.cursor()
-                cur.execute(
-                    '''
-                    INSERT INTO formulario 
-                    (id_usuarios, nombre, apellido, direccion, telefono, correo_electronico, mensaje)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s)
-                    ''',
-                    (id_usuarios, nombre, apellido, direccion, telefono, correo, mensaje)
-                )
-                conn.commit()
-                cur.close()
+        if not nombre or not apellido or not correo_electronico:
+            return "Error: Faltan datos obligatorios", 400
 
-                flash('¡Datos registrados exitosamente!', 'success')
-            else:
-                flash('Error: No fue posible conectarse a la base de datos.', 'danger')
+        cursor = conexion.cursor()
+        sql_insertar = """
+        INSERT INTO registro (id_usuarios, nombre, apellido, direccion, correo_electronico, mensaje, telefono)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """
+        cursor.execute(sql_insertar, (id_usuarios, nombre, apellido, direccion, correo_electronico, mensaje, telefono))
+        conexion.commit()
+        cursor.close()
+        conexion.close()
 
-        except psycopg2.Error as e:
-            flash(f'Error al insertar datos: {e}', 'danger')
+        # Redirige a la página principal después de guardar
+        return redirect(url_for('inicio'))
 
-        finally:
-            if conn:
-                conn.close()
+    except Exception as e:
+        print(f" Error al guardar el contacto: {e}")
+        traceback.print_exc()
+        return jsonify({'error': 'Error al procesar la solicitud'}), 500
 
-        return redirect(url_for('index'))
+# Ruta para ver todos los contactos
+@app.route('/ver', methods=['GET'])
+def ver_registros():
+    try:
+        conexion = conectar_bd()
+        if conexion is None:
+            return jsonify({'error': 'No se pudo conectar a la base de datos'}), 500
+        
+        cursor = conexion.cursor(cursor_factory=RealDictCursor)
+        cursor.execute("SELECT * FROM registro ORDER BY creado DESC;")
+        contactos = cursor.fetchall()
+        cursor.close()
+        conexion.close()
 
+        for contacto in contactos:
+            if contacto['creado']:
+                contacto['creado'] = contacto['creado'].strftime('%Y-%m-%d %H:%M:%S')
 
+        return jsonify(contactos), 200
+
+    except Exception as e:
+        print(f" Error al obtener contactos: {e}")
+        traceback.print_exc()
+        return jsonify({'error': 'Error al obtener contactos'}), 500
+
+# Inicio del servidor
 if __name__ == '__main__':
-    app.run(debug=True)
+    print(" Iniciando servidor...")
+    crear_tabla()
+    app.run(debug=True, host='0.0.0.0', port=5000)

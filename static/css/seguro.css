@@ -1,0 +1,285 @@
+/* --- Variables CSS --- */
+:root {
+    --color-top-bar-bg: #40739e; /* Azul oscuro de la barra de alerta superior */
+    --color-info-bar-bg: #f8f8f8; /* Fondo de la barra de info (dirección/tel) */
+    --color-main-menu-bg: #ffffff; /* Fondo de la barra de navegación principal */
+    --color-banner-bg: #81c784; /* Verde claro del banner "Planes de seguros" */
+    --color-footer-bg: #2c3e50; /* Azul oscuro del pie de página */
+    --color-primary-text: #333333;
+    --color-accent-link: #d9534f; /* Color rojo del dropdown y enlaces activos */
+    --color-link-hover: #1abc9c;
+}
+
+/* --- Estilos Globales y Reset --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-primary-text);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary-text);
+}
+
+/* --- 1. BARRA DE NAVEGACIÓN --- */
+
+/* BARRA SUPERIOR DE ALERTA */
+.top-bar {
+    background-color: var(--color-top-bar-bg);
+    color: var(--color-white);
+    font-size: 12px;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.top-action-message {
+    display: inline-block;
+    padding: 0 15px;
+    gap: 15px;
+}
+
+.health-declaration-link {
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* BARRA DE INFORMACIÓN (Dirección y Teléfono) */
+.info-bar {
+    background-color: var(--color-info-bar-bg);
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.info-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    padding: 0 15px;
+}
+
+.top-left-info, .top-right-info {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+
+/* BARRA PRINCIPAL DE NAVEGACIÓN (Logo y Menú) */
+.main-menu-bar {
+    background-color: var(--color-main-menu-bg);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    text-decoration: none;
+    /* El logo parece ser una combinación de icono y texto */
+    display: block; 
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #40739e; /* Color similar al icono/texto de la imagen */
+}
+
+.tagline {
+    font-size: 12px;
+    color: #777;
+    margin: -5px 0 0 0;
+}
+
+/* Menú de Enlaces */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+}
+.menu{
+    display:flex;
+}
+.menú li a {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 0;
+    gap:20px;
+}
+
+
+/* Icono de Cuenta/Dropdown */
+.account-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.dropdown-icon {
+    background-color: var(--color-accent-link); /* Círculo rojo/vino del icono */
+    color: var(--color-white);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.arrow-down {
+    color: var(--color-accent-link);
+    font-weight: bold;
+}
+
+/* --- 2. CONTENIDO PRINCIPAL --- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* BANNER "Planes de seguros" */
+.page-banner {
+    background-color: var(--color-banner-bg);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--color-white);
+    margin: 20px 0;
+    /* Para el efecto de fondo diagonal/gradiente, se necesitaría un 'background-image' o CSS más avanzado */
+}
+
+.page-banner h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+/* SECCIÓN DE PLANES ACEPTADOS */
+.insurance-plans-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.insurance-plans-section h2 {
+    color: #555;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Para que los logos se envuelvan en pantallas pequeñas */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.logo-item {
+    /* Contenedor para controlar el tamaño de cada logo */
+    max-width: 120px;
+    height: auto;
+}
+
+.logo-item img {
+    width: 100%;
+    height: auto;
+    opacity: 0.8; /* Ligeramente más apagados como en la imagen */
+    transition: opacity 0.3s;
+}
+
+.logo-item img:hover {
+    opacity: 1;
+}
+
+.contact-message {
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.contact-message .contact-link {
+    font-weight: bold;
+    color: var(--color-accent-link); /* Color destacado para el enlace */
+    text-decoration: underline;
+}
+
+/* --- 3. PIE DE PÁGINA (Footer) --- */
+.main-footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-white);
+    padding: 20px 0;
+    font-size: 13px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    flex-wrap: wrap;
+}
+
+.footer-content p, .footer-content a {
+    margin: 5px 0;
+    text-decoration: none;
+    color: var(--color-white);
+    display: block; /* Para que los elementos se apilen si es necesario */
+}
+
+.footer-left p {
+    margin: 5px 0;
+}
+
+.footer-links {
+    text-align: center;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-social a {
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+/* Media Query para Responsividad */
+@media (max-width: 768px) {
+    .info-bar-content, .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-menu-bar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .account-dropdown {
+        margin-top: 10px;
+    }
+}
+/* Archivo: seguro.css
+    Propósito: Estilos para la sección de seguros: barras, banners, logos y footer.
+    Contiene variables CSS para colores y reglas de layout. */

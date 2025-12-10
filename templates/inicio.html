@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="../static/css/inicio.css">
+</head>
+<body>
+    <header>
+        <nav class="menú">
+            <p><a href="/">PÁGINA PRINCIPAL</a></p>
+            <p><a href="/acerca">ACERCA DE</a></p>
+            <p><a href="/dep">DEPARTAMENTOS</a></p>
+            <p><a href="/seguros">SEGUROS</a></p>
+            <p><a href="/contactos">CONTACTOS</a></p>
+        </nav>
+    <header>
+        
+    <h1>Inicio de Sesión</h1>
+    <div class="container">
+        <h2>Accede a tu Cuenta.</h2>
+
+        <!-- Formulario de inicio de sesión -->
+        <form id="loginForm" action="/procesar1" method="POST" class="form-login">
+            <label for="contraseña">Contraseña</label>
+            <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa Contraseña" required>
+            
+            <label for="correo_electronico">Correo Electrónico</label>
+            <input type="text" id="correo_electronico" name="correo_electronico" placeholder="Ingresa Correo" required>
+            
+            <!--Mensaje para error en los datos ingresados-->
+            <div id="errorMessage" style="color: red; display: none; font-size:18px;"></div>
+
+            <!-- Opción para recuperar la contraseña -->
+            <div id="recoveryOption" style="display: none; margin-top: 20px;">
+                <p>¿Olvidaste tu contraseña? 
+                    <button type="button" href='/restablecer' onclick="window.location.href='/restablecer'">
+                        Haz clic aquí para restablecerla
+                    </button>
+                </p>
+            </div>
+
+            <p><input type="submit" value="Ingresar"></p>
+            <p>¿No tienes una cuenta?</p>
+            <p><button><a href="/registro">Registrarse.</a></button></p>
+        </form>
+    </div>
+
+    <!-- jQuery necesario para AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // Cuando se envía el formulario de inicio de sesión
+        $("#loginForm").submit(function(event) {
+            event.preventDefault(); // Evita que la página se recargue
+
+            var correo_electronico = $("#correo_electronico").val();
+            var contraseña = $("#contraseña").val();
+
+            // Usando AJAX para enviar los datos al servidor
+            $.ajax({
+                url: '/procesar1',  // Ruta de inicio de sesión en Flask
+                type: 'POST',
+                data: {
+                    correo_electronico: correo_electronico,
+                    contraseña: contraseña
+                },
+                success: function(response) {
+                    // Si el inicio de sesión falla
+                    if (response.error) {
+                        $("#errorMessage").text(response.error).show();
+
+                        // Si el error es "Usuario o contraseña incorrectos", muestra la opción para recuperar la contraseña
+                        if (response.error === "Usuario o contraseña incorrectos") {
+                            $("#recoveryOption").show();
+                        }
+                    } else {
+                        // Si el inicio de sesión es exitoso, redirige
+                        window.location.href = "/pagina_usuarios";
+                    }
+                },
+                error: function() {
+                    $("#errorMessage").text("Error al procesar la solicitud.").show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

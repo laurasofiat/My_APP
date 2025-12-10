@@ -1,0 +1,180 @@
+
+body{
+    background-image:url("../imagenes/m6.jpg");
+}
+.menú{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    gap: 20px;
+    height:100;
+    width:100;
+    box-shadow: 0 1px 5px ;
+}
+p a{
+    margin: 0 15px;
+    text-decoration:none;
+    color: black;
+    font-size: 15px;
+}
+header{
+    text-align: center; 
+    background-color: #e0f2f1; 
+    padding: 1px 10px;
+}
+main{
+    display: flex; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px;
+}
+.mapa-ubicacion{
+    flex: 1; 
+    padding-right: 20px;
+}
+.formulario-contacto{
+    flex: 1; 
+    padding-left: 20px;
+}
+/* --- Variables CSS (Opcional, pero útil para mantener consistencia) --- */
+:root {
+    --color-primary-blue: #2c3e50; /* Azul oscuro del pie de página y top bar */
+    --color-accent-blue: #1abc9c; /* Azul más claro del top bar */
+    --color-contact-banner: #58d68d; /* Verde/Turquesa del banner "Contáctanos" */
+    --color-white: #ffffff;
+    --color-red-dot: #e74c3c;
+}
+
+/* --- 1. Estilos Globales para la Navegación --- */
+.main-navbar {
+    width: 100%;
+    /* No hay un fondo sólido aquí, la barra principal tiene fondo blanco */
+}
+
+/* --- 2. Barra de Información Superior (Top Bar) --- */
+.top-bar {
+    background-color: var(--color-accent-blue); /* Fondo azul/celeste de la barra superior */
+    color: var(--color-white);
+    font-size: 12px;
+    padding: 8px 0;
+    display: flex; /* Habilita la alineación en línea */
+    justify-content: space-around; /* Distribuye los elementos */
+    align-items: center;
+    border-bottom: 2px solid var(--color-primary-blue); /* Simulación de separación */
+}
+
+.top-bar > div {
+    /* Asegura que los contenedores individuales sean flexibles */
+    display: flex;
+    align-items: center;
+    padding: 0 15px; /* Espaciado interno */
+}
+
+.top-action-message {
+    /* El contenedor central de mensajes */
+    text-align: center;
+    gap: 15px;
+    font-weight: bold;
+}
+
+.health-declaration-link {
+    text-decoration: underline; /* Subrayado en el enlace de declaración de salud */
+    cursor: pointer;
+}
+
+/* --- 3. Barra de Navegación Principal (Main Menu Bar) --- */
+.main-menu-bar {
+    background-color: var(--color-white); /* Fondo blanco */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    align-items: center;
+}
+
+/* Estilo para el Logo */
+.logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db; /* Color representativo, ajusta según el logo */
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    /* Si estás usando una imagen de logo */
+    height: 40px; 
+    width: auto;
+}
+
+/* Estilo para el punto rojo indicador */
+.indicator-dot {
+    position: absolute;
+    top: -5px; /* Ajusta la posición vertical */
+    right: -10px; /* Ajusta la posición horizontal */
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-red-dot);
+    border-radius: 50%; /* Lo hace circular */
+}
+
+/* --- 4. Banner/Separador "Contáctanos" --- */
+.banner-separator {
+    background-color: var(--color-contact-banner); /* Fondo verde/turquesa */
+    padding: 20px 0;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.banner-separator h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400; /* Letras no tan gruesas como en el título principal */
+}
+footer{
+    background-color: #34495e;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+footer div{
+    max-width: 1200px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: space-between;
+}
+.espa2 
+    {background-color: #4977c2; /* Color de fondo azul */
+    color: white;
+    padding: 20px 40px; /* Relleno interior para espacio */
+    display: flex; /* Habilita Flexbox para alinear elementos */
+    flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si es necesario */
+    align-items: center;
+    position: relative; /* Para posicionar los botones */
+    min-height: 100px;
+    font-size:22px;
+}
+.espa2 p{
+  color:white;
+  gap:50px;
+  padding:1px 100px;
+}
+.term a{
+  text-decoration:none;
+  color:white;
+  padding:1px 250;
+}
+.polic a{
+  text-decoration:none;
+  color:white;
+}
+.dire {
+  gap:8px;
+  color:white;
+  padding:1px 95px;
+}
+.cont {
+  gap:8px;
+  color:white;
+  padding:1px 175px;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer contraseña</title>
+    <link rel="stylesheet" href="../static/css/restablecer.css">
+</head>
+<body>
+
+    <h1>Verifica tu correo</h1>
+
+    <form id="formVerificar">
+        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ingresa tu correo" required>
+        <button type="submit">Verificar correo</button>
+    </form>
+
+    <!-- Corrección: anteriormente tenías <h1> <h1> mal cerrado -->
+    <h1></h1>
+
+    <form id="formCambiar" style="display:none;">
+        <label for="nueva_contraseña">Nueva contraseña</label>
+        <label id="mens"></label>  <!--Mensajes especificando requerimientos-->
+        <input type="password" name="nueva_contraseña" id="nueva_contraseña" placeholder="Nueva contraseña" required>
+
+        <label for="r_contraseña">Repite la contraseña</label>
+        <input type="password" id="r_contraseña" placeholder="Repite la contraseña" required>
+
+        <!-- Corrección: Había 2 div con el mismo id errorPass -->
+        <div id="errorPass" style="color:red; font-size:15px; font:arial"></div> <!--Mensaje de contraseñas diferentes-->
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <script>
+        // Manejar el envío del formulario de verificación de correo
+        document.getElementById("formVerificar").onsubmit = async (e) => {  
+            // Busca el id="formVerificar" y al hacer submit ejecuta la función asíncrona
+            e.preventDefault(); // Evita que recargue la página al momento de mostrar el comportamiento 
+
+            let res = await fetch("/verificar", { 
+                // Envía el correo del formulario a la ruta /verificar
+                method: "POST", // Lo hace por método POST
+                body: new FormData(e.target) // Toma el input del formulario
+            }); 
+
+            let data = await res.json(); // Espera la respuesta del servidor
+
+            if (data.success) { 
+                // Si el dato que da success es verdadero
+                alert(data.mensaje); // Muestra una alerta con el mensaje recibido del servidor
+                document.getElementById("formCambiar").style.display = "block"; 
+                // Muestra el formulario para cambiar la contraseña
+            } else { 
+                // Si no
+                alert(data.error); // Muestra una alerta con el mensaje de error recibido del servidor
+            }
+        };
+
+        function validar_contraseña(contraseña) { // Realiza la validación de la contraseña especificando requerimientos
+            if (contraseña.length < 8) return "La contraseña debe tener al menos 8 caracteres"; // Verifica longitud mínima
+            if (!/[A-Z]/.test(contraseña)) return "Debe incluir al menos una letra mayúscula"; // Verifica letra mayúscula
+            if (!/[a-z]/.test(contraseña)) return "Debe incluir al menos una letra minúscula"; // Verifica letra minúscula
+            if (!/\d/.test(contraseña)) return "Debe incluir al menos un número"; // Verifica número
+            if (!/[!@#$%^&*_(),.?\":{}|<>]/.test(contraseña)) return "Debe incluir un carácter especial"; // Verifica carácter especial
+            return ""; // Devuelve cadena vacía si todo es válido
+        }
+
+        function mostrarError(msg) { // Muestra el mensaje de error en el HTML
+            const alerta = document.getElementById("mens"); // Busca en el formulario el id="mens"
+            alerta.innerHTML = msg; // Inserta el contenido HTML con la variable msg
+            alerta.style.color = "red"; // Cambia el color a rojo
+            alerta.style.fontSize = "15px"; // Cambia el tamaño de la fuente a 15px
+            alerta.style.font = 'Arial'; // Establece la fuente en Arial
+        }
+        
+        document.addEventListener("DOMContentLoaded", () => { // Espera a que el DOM esté cargado antes de asociar eventos
+            const formCambiar = document.getElementById("formCambiar"); // Obtiene referencia del formulario de cambio
+            const errorDiv = document.getElementById("errorPass"); // Obtiene referencia del div de errores
+
+            // Validación en tiempo real de la contraseña
+            document.getElementById("nueva_contraseña").addEventListener("input", function () { // Valida mientras el usuario escribe
+                const error = validar_contraseña(this.value); // Valida la contraseña y guarda resultado
+                mostrarError(error); // Muestra el error si lo hay
+            });
+
+            // Manejo del envío del formulario de cambio de contraseña
+            formCambiar.onsubmit = async function(e) { // Ejecuta función asíncrona al enviar el formulario
+                e.preventDefault(); // Evita que recargue la página
+
+                const nueva = document.getElementById("nueva_contraseña").value; // Obtiene el valor de la nueva contraseña
+                const r_nueva = document.getElementById("r_contraseña").value; // Obtiene el valor de la repetición
+
+                // Validar la contraseña según reglas
+                const errorPass = validar_contraseña(nueva); // Valida la contraseña
+                if (errorPass) { // Si hay un error en la validación
+                    mostrarError(errorPass); // Muestra el error
+                    return; // Se detiene la ejecución
+                }
+            
+                // Comparar las contraseñas
+                if (nueva !== r_nueva) { // Si las contraseñas no coinciden
+                    errorDiv.textContent = "Las contraseñas no coinciden"; // Muestra mensaje en pantalla
+                    return; // Se detiene la ejecución
+                } else { // Si las contraseñas coinciden
+                    errorDiv.textContent = ""; // Limpia el mensaje de error
+                }
+
+                // Crear FormData y enviar al backend
+                const formData = new FormData(); // Crea objeto FormData para enviar datos
+                formData.append("correo_electronico", document.getElementById("correo_electronico").value); // Agrega correo al FormData
+                formData.append("nueva_contraseña", nueva); // Agrega nueva contraseña al FormData
+
+                try { // Intenta ejecutar el código dentro del bloque
+                    let res = await fetch("/cambiar", { // Envía datos al backend a la ruta /cambiar
+                        method: "POST", // Método POST para enviar datos
+                        body: formData // Cuerpo de la solicitud con FormData
+                    });
+
+                    let data = await res.json(); // Espera la respuesta del servidor
+
+                    if (data.success) { // Si es exitoso
+                        alert("Contraseña actualizada correctamente"); // Muestra mensaje de éxito
+                        formCambiar.reset(); // Limpia los campos del formulario
+                        formCambiar.style.display = "none"; // Oculta el formulario
+                        // Redirige al usuario a inicio sesión para ingresar con nueva contraseña
+                        window.location.href = "/inicio";
+                    } else { // Si hubo error en el servidor
+                        errorDiv.textContent = data.error; // Muestra error del backend
+                    }
+                } catch (err) { // Captura errores de red o JSON
+                    errorDiv.textContent = "Error al conectarse al servidor"; // Muestra mensaje de error de conexión
+                    console.error(err); // Imprime el error en la consola del navegador para debugging
+                }
+
+            }; // Fin del evento onsubmit del formulario de cambio
+        }); // Fin del evento DOMContentLoaded
+    </script>
+
+</body>
+</html>

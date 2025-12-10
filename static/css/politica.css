@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color:#c1c3d1;
+    color: #333;
+}
+.menú{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    gap: 15px;
+    margin-top:20px;
+    height:60px;
+    box-shadow: 0 1px 10px ;
+}
+p a{
+    margin: 0 15px;
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+.espa div p{
+    height:20px;;
+    background-color:#c1c3d1;
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color:#ededed;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgb(74, 80, 95);
+}
+h1 {
+    color: #4e5762;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+h2 {
+    color: #72819a;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+ul {
+    padding-left: 20px;
+}
+strong {
+    color: #333;
+}
+/* Archivo: politica.css
+    Propósito: Estilos para la página de política de privacidad. Define contenedores,
+    tipografía y secciones de contenido legal. */

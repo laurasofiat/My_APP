@@ -1,0 +1,49 @@
+/* Archivo: contacto.css
+   Comentarios inline explican la función de cada selector y propiedad */
+body{ background-image:url("../imagenes/m6.jpg"); /* Imagen de fondo de la página */ }
+.menú{ display:flex; /* Contenedor flexible del menú */ position:relative; /* Posicionamiento relativo */ justify-content:center; /* Centrado horizontal */ gap: 20px; /* Espacio entre items */ height:100px; /* Altura del menú */ width:100%; /* Ancho total */ box-shadow: 0 1px 5px ; /* Sombra ligera */ }
+p a{ margin: 0 15px; /* Espacio lateral entre enlaces */ text-decoration:none; /* Sin subrayado */ color: black; /* Color del enlace */ font-size: 15px; /* Tamaño de texto */ }
+header{ text-align: center; /* Centra el contenido del header */ background-color: #e0f2f1; /* Fondo del header */ padding: 1px 10px; /* Relleno */ }
+main{ display: flex; /* Contenedor principal en fila */ max-width: 1200px; /* Ancho máximo */ margin: 0 auto; /* Centra el main */ padding: 20px; /* Relleno interior */ }
+.mapa-ubicacion{ flex: 1; /* Ocupa espacio proporcional */ padding-right: 20px; /* Separación derecha */ }
+.formulario-contacto{ flex: 1; /* Ocupa espacio proporcional */ padding-left: 20px; /* Separación izquierda */ }
+
+:root { --color-primary-blue: #2c3e50; /* Variable: azul primario */ --color-accent-blue: #1abc9c; /* Variable: acento */ --color-contact-banner: #58d68d; /* Variable: banner */ --color-white: #ffffff; --color-red-dot: #e74c3c; }
+
+.main-navbar { width: 100%; /* Barra de navegación ocupa todo el ancho */ }
+
+.top-bar { background-color: var(--color-accent-blue); /* Fondo top bar */ color: var(--color-white); /* Color del texto */ font-size: 12px; /* Tamaño pequeño */ padding: 8px 0; /* Relleno vertical */ display: flex; /* Flex para alinear elementos */ justify-content: space-around; /* Distribuye espacios */ align-items: center; /* Centra verticalmente */ border-bottom: 2px solid var(--color-primary-blue); /* Línea inferior */ }
+
+.top-bar > div { display: flex; /* Contenedores internos en fila */ align-items: center; /* Centrado vertical */ padding: 0 15px; /* Relleno interno */ }
+
+.top-action-message { text-align: center; /* Centra contenido */ gap: 15px; /* Espaciado entre elementos */ font-weight: bold; /* Texto en negrita */ }
+
+.health-declaration-link { text-decoration: underline; /* Subraya enlace */ cursor: pointer; /* Cambia cursor */ }
+
+.main-menu-bar { background-color: var(--color-white); /* Fondo de la barra del menú */ padding: 15px 30px; /* Relleno */ display: flex; /* Flexbox */ justify-content: space-between; /* Separa logo y menú */ align-items: center; /* Centra vertical */ }
+
+.logo a { text-decoration: none; /* Sin subrayado */ font-size: 24px; /* Tamaño del logo en texto */ font-weight: bold; /* Negrita */ color: #3498db; /* Color del logo */ display: flex; /* Flex para alinear icono y texto */ align-items: center; }
+
+.logo img { height: 40px; /* Altura de la imagen del logo */ width: auto; /* Mantiene proporción */ }
+
+.indicator-dot { position: absolute; /* Posición absoluta respecto al contenedor */ top: -5px; /* Desplazamiento vertical */ right: -10px; /* Desplazamiento horizontal */ width: 8px; /* Ancho del punto */ height: 8px; /* Alto del punto */ background-color: var(--color-red-dot); /* Color del punto */ border-radius: 50%; /* Punto circular */ }
+
+.banner-separator { background-color: var(--color-contact-banner); /* Fondo del banner */ padding: 20px 0; /* Relleno vertical */ text-align: center; /* Centra texto */ color: var(--color-white); /* Color del texto */ }
+
+.banner-separator h1 { margin: 0; /* Sin margen */ font-size: 24px; /* Tamaño del título */ font-weight: 400; /* Peso de la fuente */ }
+
+footer{ background-color: #34495e; /* Fondo del footer */ color: white; /* Color del texto */ padding: 15px; /* Relleno */ text-align: center; /* Centra contenido */ }
+
+footer div{ max-width: 1200px; /* Ancho máximo */ margin: 0 auto; /* Centrado */ display: flex; /* Flexbox */ justify-content: space-between; /* Separación entre columnas */ }
+
+.espa2 { background-color: #4977c2; /* Fondo azul */ color: white; /* Texto blanco */ padding: 20px 40px; /* Relleno */ display: flex; /* Flexbox */ flex-wrap: wrap; /* Permite envolver elementos */ align-items: center; /* Centra vertical */ position: relative; /* Para posicionamiento absoluto de hijos */ min-height: 100px; /* Altura mínima */ font-size:22px; /* Tamaño de fuente */ }
+
+.espa2 p{ color:white; /* Color del texto */ gap:50px; /* Espacio entre elementos */ padding:1px 100px; /* Relleno */ }
+
+.term a{ text-decoration:none; /* Sin subrayado */ color:white; /* Color blanco */ padding:1px 250px; /* Relleno (solo números con unidad recomendada) */ }
+
+.polic a{ text-decoration:none; /* Sin subrayado */ color:white; /* Color blanco */ }
+
+.dire { gap:8px; /* Espacio entre elementos */ color:white; /* Color del texto */ padding:1px 95px; /* Relleno */ }
+
+.cont { gap:8px; /* Espacio entre elementos */ color:white; /* Color del texto */ padding:1px 175px; /* Relleno */ }

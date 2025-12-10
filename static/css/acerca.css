@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 20px;
+    background-color:rgb(144, 155, 176);
+    color: #444;
+}
+.menú{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    gap: 15px;
+    margin-top:20px;
+    height:60px;
+    box-shadow: 0 1px 10px ;
+}
+p a{
+    margin: 0 15px;
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+.espa div p{
+    height:20px;;
+    background-color:rgb(144, 155, 176);
+
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 30px rgb(82, 84, 93);
+}
+h1 {
+    color: #444c5a; /* Azul del footer */
+    text-align: center;
+    margin-bottom: 5px;
+}
+.subtitle {
+    text-align: center;
+    color: #64768d; /* Verde para destacar la misión */
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #d6d4d4;
+    padding-bottom: 15px;
+}
+h2 {
+    color: #333;
+    margin-top: 35px;
+    border-left: 4px solid #5e6ebc; /* Naranja/Amarillo de los botones */
+    padding-left: 10px;
+    font-weight: 600;
+}
+.team-section {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.contact-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+./* Archivo: acerca.css
+.   Propósito: Estilos para la página "Acerca de". Define tipografía, contenedores,
+.   colores y distribución de secciones (equipo, contacto, etc.).
+.*/

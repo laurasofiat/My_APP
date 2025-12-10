@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="../static/css/contacto.css">
+</head>
+<body>
+    <nav class="menú">
+        <p><a href="/">PÁGINA PRINCIPAL</a></p>
+        <p><a href="/acerca">ACERCA DE</a></p>
+        <p><a href="/dep">DEPARTAMENTOS</a></p>
+        <p><a href="/seguros">SEGUROS</a></p>
+    </nav>
+
+    <header>
+        <h1>Contáctanos</h1>
+    </header>
+
+    <main>
+        
+        <section id="mapa-ubicacion">
+            <div id="mapa-container">
+                <button>Mapa</button>
+                <button>Satélite</button>
+                
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE"
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
+        <section id="formulario-contacto" style="flex: 1; padding-left: 20px;">
+            
+            <div class="info-contacto">
+                <h2>Ubicación</h2>
+                <p><strong>Calle 31# 44-299</strong></p>
+                <p>Palmira, Colombia</p>
+                <p>Tel: +57 305 8164022</p>
+                <p>info@misitio.com</p>
+            </div>
+
+            <form action="URL_DE_PROCESAMIENTO_DEL_FORMULARIO" method="POST">
+                
+                <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                    <input type="text" name="nombre" placeholder="nombre" style="flex: 1;">
+                    <input type="text" name="apellido" placeholder="apellido" style="flex: 1;">
+                </div>
+
+                <input type="email" name="email" placeholder="email*" style="width: 100%; margin-bottom: 10px;">
+                
+                <input type="text" name="asunto" placeholder="Asunto" style="width: 100%; margin-bottom: 10px;">
+
+                <textarea name="mensaje" placeholder="Mensaje" rows="5" style="width: 100%; margin-bottom: 20px;"></textarea>
+
+                <button type="submit" style="width: 100%; background-color: #9b59b6; color: white; padding: 10px; border: none; cursor: pointer;">
+                    Si deseas enviar... <a href='/registro'>Registrate</a> o <a href='/inicio'>Inicia sesión</a>
+                </button>
+            </form>
+
+            <p style="text-align: center;">Gracias por enviar tu mensaje</p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="espa2"> 
+            <p>2025 Creado por Medic-Agenda</p>
+            <div class="term"><a href="/terminos">Terminos y Condiciones</a></div>
+            <div class="polic"><a href="/politicas">Politica de privacidad</a></div>
+            <div class="dire">📍 Calle 31 # 44 - 239 Palmira, Colombia</div>
+            <div class="cont">📞 Teléfono: +57 3058164022</div>
+        </div>
+    </footer>
+
+</body>
+</html>

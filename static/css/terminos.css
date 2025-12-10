@@ -1,0 +1,53 @@
+ body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: rgb(158, 164, 175);
+    color: #333;
+}
+.menú{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    gap: 15px;
+    margin-top:20px;
+    height:60px;
+    box-shadow: 0 1px 10px ;
+}
+p a{
+    margin: 0 15px;
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+.espa div p{
+    height:20px;;
+    background-color:rgb(158, 164, 175);
+
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f3f0f0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgb(72, 86, 105);
+}
+h1 {
+    color: #556575;
+    border-bottom: 2px solid #cecece;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+h2 {
+    color: #697787;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+ul {
+    padding-left: 20px;
+}
+/* Archivo: terminos.css
+    Propósito: Estilos para la página de términos y condiciones. Incluye tipografía,
+    contenedores y estilo de listas y títulos. */

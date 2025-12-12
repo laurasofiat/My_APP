@@ -61,7 +61,10 @@ margin: auto;
     padding: 30px;
     box-shadow: 0 2px 10px ;
 }
-form input{resize: vertical; width:540px;}
+
+form input{resize: vertical;
+     width:540px;}
+
 input, textarea {
             width: 100%;
             padding: 10px;
@@ -70,7 +73,11 @@ input, textarea {
             border-radius: 5px;
             font-size: 14px;
         }
-textarea { min-height: 100px; resize: vertical;width:540px;}
+
+textarea { min-height: 100px;
+     resize: vertical;
+     width:540px;}
+
 button {
     width: 100%;
     padding: 12px;
@@ -81,3 +88,4 @@ button {
     font-size: 16px;
     cursor: pointer;
     }
+

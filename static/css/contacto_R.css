@@ -1,180 +1,114 @@
 
-body{
-    background-image:url("../imagenes/m6.jpg");
-}
-.menú{
-    display:flex;
-    position:relative;
-    justify-content:center;
-    gap: 20px;
-    height:100;
-    width:100;
-    box-shadow: 0 1px 5px ;
-}
-p a{
-    margin: 0 15px;
-    text-decoration:none;
-    color: black;
-    font-size: 15px;
-}
-header{
-    text-align: center; 
-    background-color: #e0f2f1; 
-    padding: 1px 10px;
-}
-main{
-    display: flex; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 20px;
-}
-.mapa-ubicacion{
-    flex: 1; 
-    padding-right: 20px;
-}
-.formulario-contacto{
-    flex: 1; 
-    padding-left: 20px;
-}
-/* --- Variables CSS (Opcional, pero útil para mantener consistencia) --- */
-:root {
-    --color-primary-blue: #2c3e50; /* Azul oscuro del pie de página y top bar */
-    --color-accent-blue: #1abc9c; /* Azul más claro del top bar */
-    --color-contact-banner: #58d68d; /* Verde/Turquesa del banner "Contáctanos" */
-    --color-white: #ffffff;
-    --color-red-dot: #e74c3c;
-}
+body{ background-image:url("../imagenes/m6.jpg"); /* Imagen de fondo de la página */ }
 
-/* --- 1. Estilos Globales para la Navegación --- */
-.main-navbar {
-    width: 100%;
-    /* No hay un fondo sólido aquí, la barra principal tiene fondo blanco */
-}
+.menú{ display:flex; /* Contenedor flexible del menú */ 
+   position:center; /* Posicionamiento relativo */ 
+   justify-content:center; /* Centrado horizontal */ 
+   gap: 120px; /* Espacio entre items */ 
+   height:50px; /* Altura del menú */ 
+   width:100%; /* Ancho total */ 
+   box-shadow: 0 3px 4px ; /* Sombra ligera */ }
 
-/* --- 2. Barra de Información Superior (Top Bar) --- */
-.top-bar {
-    background-color: var(--color-accent-blue); /* Fondo azul/celeste de la barra superior */
-    color: var(--color-white);
-    font-size: 12px;
-    padding: 8px 0;
-    display: flex; /* Habilita la alineación en línea */
-    justify-content: space-around; /* Distribuye los elementos */
-    align-items: center;
-    border-bottom: 2px solid var(--color-primary-blue); /* Simulación de separación */
-}
+p a{ margin: 0 15px; /* Espacio lateral entre enlaces */ 
+   text-decoration:none; /* Sin subrayado */ 
+   color: black; /* Color del enlace */ 
+   font-size: 15px; /* Tamaño de texto */ }
 
-.top-bar > div {
-    /* Asegura que los contenedores individuales sean flexibles */
-    display: flex;
-    align-items: center;
-    padding: 0 15px; /* Espaciado interno */
-}
+header{ text-align: center; /* Centra el contenido del header */ 
+   background-color: #e0f2f1; /* Fondo del header */ 
+   padding: 1px 10px; /* Relleno */ }
 
-.top-action-message {
-    /* El contenedor central de mensajes */
-    text-align: center;
-    gap: 15px;
-    font-weight: bold;
-}
+main{ display: flex; /* Contenedor principal en fila */ 
+   max-width: 1200px; /* Ancho máximo */ 
+   margin: 0 auto; /* Centra el main */ 
+   padding: 20px; /* Relleno interior */ }
 
-.health-declaration-link {
-    text-decoration: underline; /* Subrayado en el enlace de declaración de salud */
-    cursor: pointer;
-}
+.mapa-ubicacion{ flex: 1; /* Ocupa espacio proporcional */ 
+   padding-right: 20px; /* Separación derecha */ }
 
-/* --- 3. Barra de Navegación Principal (Main Menu Bar) --- */
-.main-menu-bar {
-    background-color: var(--color-white); /* Fondo blanco */
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
-    align-items: center;
-}
+.formulario-contacto{ flex: 1; /* Ocupa espacio proporcional */ 
+   padding-left: 20px; /* Separación izquierda */ }
 
-/* Estilo para el Logo */
-.logo a {
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #3498db; /* Color representativo, ajusta según el logo */
-    display: flex;
-    align-items: center;
-}
+:root { --color-primary-blue: #2c3e50; /* Variable: azul primario */ 
+   --color-accent-blue: #1abc9c; /* Variable: acento */ 
+   --color-contact-banner: #58d68d; /* Variable: banner */ 
+   --color-white: #ffffff; 
+   --color-red-dot: #e74c3c; }
 
-.logo img {
-    /* Si estás usando una imagen de logo */
-    height: 40px; 
-    width: auto;
-}
+.main-navbar { width: 100%; /* Barra de navegación ocupa todo el ancho */ }
 
-/* Estilo para el punto rojo indicador */
-.indicator-dot {
-    position: absolute;
-    top: -5px; /* Ajusta la posición vertical */
-    right: -10px; /* Ajusta la posición horizontal */
-    width: 8px;
-    height: 8px;
-    background-color: var(--color-red-dot);
-    border-radius: 50%; /* Lo hace circular */
-}
+.top-bar { background-color: var(--color-accent-blue); /* Fondo top bar */ 
+   color: var(--color-white); /* Color del texto */ 
+   font-size: 12px; /* Tamaño pequeño */ 
+   padding: 8px 0; /* Relleno vertical */ 
+   display: flex; /* Flex para alinear elementos */ 
+   justify-content: space-around; /* Distribuye espacios */ 
+   align-items: center; /* Centra verticalmente */ 
+   border-bottom: 2px solid var(--color-primary-blue); /* Línea inferior */ }
 
-/* --- 4. Banner/Separador "Contáctanos" --- */
-.banner-separator {
-    background-color: var(--color-contact-banner); /* Fondo verde/turquesa */
-    padding: 20px 0;
-    text-align: center;
-    color: var(--color-white);
-}
+.top-bar > div { display: flex; /* Contenedores internos en fila */ 
+   align-items: center; /* Centrado vertical */ 
+   padding: 0 15px; /* Relleno interno */ }
 
-.banner-separator h1 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 400; /* Letras no tan gruesas como en el título principal */
-}
-footer{
-    background-color: #34495e;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-footer div{
-    max-width: 1200px; 
-    margin: 0 auto; 
-    display: flex; 
-    justify-content: space-between;
-}
+.top-action-message { text-align: center; /* Centra contenido */ 
+   gap: 15px; /* Espaciado entre elementos */ 
+   font-weight: bold; /* Texto en negrita */ }
+
+.health-declaration-link { text-decoration: underline; /* Subraya enlace */ 
+   cursor: pointer; /* Cambia cursor */ }
+
+.main-menu-bar { background-color: var(--color-white); /* Fondo de la barra del menú */ 
+   padding: 15px 30px; /* Relleno */ display: flex; /* Flexbox */ 
+   justify-content: space-between; /* Separa logo y menú */ 
+   align-items: center; /* Centra vertical */ }
+
+.logo a { text-decoration: none; /* Sin subrayado */ 
+   font-size: 24px; /* Tamaño del logo en texto */ 
+   font-weight: bold; /* Negrita */ color: #3498db; /* Color del logo */ 
+   display: flex; /* Flex para alinear icono y texto */ 
+   align-items: center; }
+
+.logo img { height: 40px; /* Altura de la imagen del logo */ 
+   width: auto; /* Mantiene proporción */ }
+
+.indicator-dot { position: absolute; /* Posición absoluta respecto al contenedor */ 
+   top: -5px; /* Desplazamiento vertical */ right: -10px; /* Desplazamiento horizontal */ 
+   width: 8px; /* Ancho del punto */ height: 8px; /* Alto del punto */ 
+   background-color: var(--color-red-dot); /* Color del punto */ 
+   border-radius: 50%; /* Punto circular */ }
+
+.banner-separator { background-color: var(--color-contact-banner); /* Fondo del banner */ 
+   padding: 20px 0; /* Relleno vertical */ 
+   text-align: center; /* Centra texto */ 
+   color: var(--color-white); /* Color del texto */ }
+
+.banner-separator h1 { margin: 0; /* Sin margen */ 
+   font-size: 24px; /* Tamaño del título */ 
+   font-weight: 400; /* Peso de la fuente */ }
+
 .espa2 
     {background-color: #4977c2; /* Color de fondo azul */
     color: white;
-    padding: 20px 40px; /* Relleno interior para espacio */
+    padding: 20px 10px; /* Relleno interior para espacio */
     display: flex; /* Habilita Flexbox para alinear elementos */
     flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si es necesario */
     align-items: center;
     position: relative; /* Para posicionar los botones */
-    min-height: 100px;
-    font-size:22px;
+    min-height: 80px;
+    font-size:19px;
 }
 .espa2 p{
   color:white;
   gap:50px;
-  padding:1px 100px;
+  padding:1px 110px;
 }
 .term a{
   text-decoration:none;
   color:white;
-  padding:1px 250;
+  padding:1px 200px;
 }
 .polic a{
   text-decoration:none;
   color:white;
-}
-.dire {
-  gap:8px;
-  color:white;
-  padding:1px 95px;
-}
-.cont {
-  gap:8px;
-  color:white;
-  padding:1px 175px;
+  padding:1px 100px;
 }

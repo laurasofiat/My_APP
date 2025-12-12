@@ -90,6 +90,12 @@ def contactosR():
     # Contacto para usuarios registrados
     return render_template('contacto_R.html')
 
+#Página seguros para los usuarios
+@app.route('/segurosR')
+def segurosR():
+    # Contacto para usuarios registrados
+    return render_template('seguros_R.html')
+
 #Página envía para los usuarios
 @app.route('/enviaR')
 def enviaR():
